@@ -4,6 +4,17 @@ server:
 spring:
   application:
     name: spring-cloud-config-server
-  profiles:
-    active:
-      - native
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/henrique-pignatari/spring-cloud-micro-services
+          search-paths:
+            - 'configurations*'
+            - 'configurations/greeting-service*'
+            -
+# this down points to a /resources/config folder that holds the configuration files
+#  profiles:
+#    active:
+#      - native
