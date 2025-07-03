@@ -1,0 +1,32 @@
+services:
+  exchange-db:
+    image: mysql:8.0
+    container_name: exchange-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: exchange_service
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+    ports:
+      - "3306:3306"
+    volumes:
+      - exchange_db_data:/var/lib/mysql
+
+  book-db:
+    image: mysql:8.0
+    container_name: book-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: book_service
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+    ports:
+      - "3307:3306"
+    volumes:
+      - book_db_data:/var/lib/mysql
+
+volumes:
+  exchange_db_data:
+  book_db_data:
