@@ -13,7 +13,7 @@ spring:
           search-paths:
             - 'configurations*'
             - 'configurations/greeting-service*'
-            -
+
 # this down points to a /resources/config folder that holds the configuration files
 #  profiles:
 #    active:
