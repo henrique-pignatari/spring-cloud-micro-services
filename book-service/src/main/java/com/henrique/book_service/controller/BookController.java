@@ -5,12 +5,15 @@ import com.henrique.book_service.environment.InstanceInformationService;
 import com.henrique.book_service.model.Book;
 import com.henrique.book_service.proxy.ExchangeProxy;
 import com.henrique.book_service.repository.BookRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Book Endpoint")
 @RestController
 @RequestMapping("book-service")
 public class BookController {
@@ -25,6 +28,7 @@ public class BookController {
         this.exchangeProxy = exchangeProxy;
     }
 
+    @Operation(summary = "Find a specific book by its Id")
     @GetMapping(value = "/{id}/{currency}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Book findBook(@PathVariable("id") Long id, @PathVariable("currency") String currency) {
         String port = "PORT " + informationService.retrieveServerPort();
