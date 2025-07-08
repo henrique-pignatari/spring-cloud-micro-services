@@ -27,6 +27,14 @@ services:
     volumes:
       - book_db_data:/var/lib/mysql
 
+  zipkin:
+    image: openzipkin/zipkin:3.5.1
+    container_name: zipkin
+    environment:
+      - STORAGE_TYPE=mem
+    ports:
+      - 9411:9411
+
 volumes:
   exchange_db_data:
   book_db_data:
