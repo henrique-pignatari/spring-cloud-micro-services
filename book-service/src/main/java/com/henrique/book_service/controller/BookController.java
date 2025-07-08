@@ -34,7 +34,6 @@ public class BookController {
         String port = "PORT " + informationService.retrieveServerPort();
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("could not find book with id: " + id));
-
         Exchange exchange = exchangeProxy.getExchange(book.getPrice(),"USD", currency);
         book.setPrice(exchange.getConvertedValue());
         book.setCurrency(currency);
